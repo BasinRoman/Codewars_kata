@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+
+public class Kata
+{
+  public static bool IsValidWalk(string[] walk)
+  {
+    int walkLenght = walk.Length;
+            if (walkLenght == 10)
+            {
+                int meet_w = walk.Count(g => g == "w");
+                int meet_n = walk.Count(g => g == "n");
+                int meet_e = walk.Count(g => g == "e");
+                int meet_s = walk.Count(g => g == "s");
+                if ((meet_e == meet_w) && (meet_n == meet_s))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            return false;
+  }
+}
