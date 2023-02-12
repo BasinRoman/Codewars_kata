@@ -1,0 +1,26 @@
+using System.Linq;
+using System;
+using System.Collections.Generic;
+
+class AreTheySame
+{
+  public static bool comp(int[] a, int[] b)
+  {
+        if (a == null || b == null)
+        {
+            return false;
+        }
+        else if (!a.Any() & !b.Any()){
+          return true;    
+        };
+        List<double> doubles = a.Select<int, double>(i => i).ToList();
+        var counter1 = b.Where(x => !doubles.Contains(Math.Sqrt(x))).ToList();
+        var counter2 = a.Where(x => b.Contains(x * x)).ToList().GroupBy(e=>e).
+            Select(g => new{Value = g.Key, Count = g.Count()}).OrderByDescending(i => i.Value);
+        if (counter2.Any(x=>x.Count != b.Count(c => c == x.Value*x.Value)))
+        {
+            return false;
+        }
+        return !counter1.Any();
+  }
+}
