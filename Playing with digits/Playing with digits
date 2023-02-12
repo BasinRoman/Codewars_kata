@@ -1,0 +1,33 @@
+using System.Linq;
+using System.Collections.Generic;
+using System;
+
+        public class DigPow
+        {
+            public static long digPow(int n, int p)
+            {
+                int total1 = 0;
+                int total2 = 0;
+                int i = 1;
+                string numberString = n.ToString();
+                var intList = numberString.Select(digit => int.Parse(digit.ToString()));
+
+                foreach (var number in intList)
+                {
+                    total1 = total1 + (int)Math.Pow(number, p);
+                    p++;
+                }
+                while (total2 <= total1)
+                {
+                    total2 = 0;
+                    total2 = n * i;
+                    
+                    if (total2 == total1)
+                    {
+                        return i;
+                    }
+                    i++;
+                }       
+                return -1;
+            }
+        }
