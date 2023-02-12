@@ -1,0 +1,19 @@
+using System.Collections.Generic;
+using System.Linq;
+using System;
+
+public class Kata
+{
+  public static int Find(int[] integers)
+  {
+    var counter = integers.Count(x => x%2 == 0);
+                    switch (counter)
+                    {
+                        case 1:
+                            return integers.FirstOrDefault(counter=> counter % 2 == 0);
+                        default:
+                            return integers.FirstOrDefault(counter => counter % 2 != 0);
+                        break;
+                    }
+  }
+}
