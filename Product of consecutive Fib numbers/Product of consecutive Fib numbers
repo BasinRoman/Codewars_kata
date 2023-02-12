@@ -1,0 +1,42 @@
+using System;
+using System.Runtime.CompilerServices;
+public class ProdFib {
+  private static double closestFib(double number)
+       {
+            double number1 = 0;
+            double number2 = 1;
+            double number3 = 1;
+            while (number3 < number)
+            {
+                number3 = number1 + number2;
+                number1 = number2;
+                number2 = number3;
+                if (number3 == number)
+                {
+                    return number3;
+                }
+            }
+            return number1;
+        }
+        public static ulong[] productFib(ulong prod)
+        {
+            double firstIteration = prod / 1.61803398874989484820;
+            double firstIterationPow = Math.Pow(firstIteration, 1.0 / 2);
+            double secondIteration = firstIterationPow * 1.61803398874989484820;
+            double sum = Math.Round(firstIterationPow) * Math.Round(secondIteration);
+            if ((ulong)sum == prod)
+            {
+                return new ulong[]
+                {
+                    (ulong)Math.Round(firstIterationPow), (ulong)Math.Round(secondIteration), 1
+                };
+            }
+            var closestA = closestFib(firstIterationPow);
+            var closestB = closestFib(secondIteration);
+            
+            return new ulong[]
+            {
+                (ulong)closestB, (ulong)closestB + (ulong)closestA, 0
+            };
+        }
+}
