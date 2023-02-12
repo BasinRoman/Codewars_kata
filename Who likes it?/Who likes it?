@@ -1,0 +1,37 @@
+using System;
+using System.Text;
+
+public static class Kata
+{
+  public static string Likes(string[] myString)
+  {
+    {
+            int myStringLenght = myString.Length;
+            StringBuilder sb = new StringBuilder();
+            if (myStringLenght == 0)
+            {
+                return "no one likes this";
+            }
+            else if (myStringLenght == 3)
+            {
+                sb.Append($"{myString[0]}, {myString[1]} and {myString[2]} like this");
+                return sb.ToString();
+            }
+            else if (myStringLenght == 1)
+            {
+                sb.Append($"{myString[0]} likes this");
+                return sb.ToString();
+            }
+            else if (myStringLenght == 2)
+            {
+                sb.Append($"{myString[0]} and {myString[1]} like this");
+                return sb.ToString();
+            }
+            else
+            {
+                sb.Append($"{myString[0]}, {myString[1]} and {myString.Length - 2} others like this");
+                return sb.ToString();
+            }
+        }
+  }
+}
