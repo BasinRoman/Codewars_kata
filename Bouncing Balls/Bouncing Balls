@@ -1,0 +1,19 @@
+using System;
+public class BouncingBall {
+	
+	public static int bouncingBall(double h, double bounce, double window) 
+        {
+            if (bounce == 1 | h<0 | bounce<0 | h == window)
+            {
+                return -1;
+            }
+            int counter = 0;
+            while (h*bounce > window)
+            {
+                h *= bounce;
+                counter += 2;
+            }
+            counter++;
+            return counter;
+        }
+}
