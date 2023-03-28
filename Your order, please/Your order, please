@@ -1,0 +1,19 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+public static class Kata
+{
+  public static string Order(string words)
+  {
+    string[] SplitedString = words.Split(" ");
+        Dictionary<int, string> MyDict = new Dictionary<int, string>();
+        foreach (var VARIABLE in SplitedString)
+        {
+            int.TryParse(string.Join("", VARIABLE.Where(x => char.IsDigit(x))), out int _result);
+            MyDict.Add(_result, VARIABLE);
+        }
+        return string.Join(" ", MyDict.OrderBy(x => x.Key)
+                                .ToDictionary(x => x.Key, x => x.Value).Values);
+  }
+}
